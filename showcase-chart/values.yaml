@@ -1,0 +1,15 @@
+app_name: server
+replica_count: 1
+network:
+  port: 8080
+  external_port: 30000
+namespace: default
+configmap:
+  name: server-configmap
+  data:
+    KEY1: 'DEFAULT1'
+    KEY2: 'DEFAULT2'
+    KEY3: 'DEFAULT3'
+image:
+  name: wanwiset/devops-showcase
+  tag: latest

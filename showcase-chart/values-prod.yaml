@@ -1,0 +1,9 @@
+namespace: prod
+replica_count: 4
+network:
+  external_port: 30200
+configmap:
+  data:
+    KEY1: 'PROD1'
+image:
+  tag: v1.0.0

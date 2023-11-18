@@ -1,0 +1,7 @@
+namespace: dev
+replica_count: 2
+network:
+  external_port: 30100
+configmap:
+  data:
+    KEY1: 'DEV1'
