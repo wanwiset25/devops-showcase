@@ -8,5 +8,5 @@ RUN rm -r /build
 WORKDIR /app
 EXPOSE 8080
 
-ENTRYPOINT [ "/app/server" ]
+ENTRYPOINT [ "/bin/bash", "/app/server" ]
 

@@ -1,0 +1,38 @@
+name: Build and publish image 
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - "*"
+
+jobs:
+  build_and_push_to_docker_registry:
+    name: build and push image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+      
+      - name: Docker login
+        env:
+          DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+          DOCKER_PASSWORD: ${{secrets.DOCKER_ACCESS_TOKEN}}
+        run: |
+          echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
+      - name: Determine Docker Image Name
+        id: image
+        run: |
+          if [[ "${{github.ref_name}}" == "master" ]]; then
+            echo "name=wanwiset25/devops-showcase:latest" >> $GITHUB_OUTPUT
+          else
+            echo "name=wanwiset25/devops-showcase:${{github.ref_name}}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build and push image
+        run: |
+          cd server
+          docker build . --tag ${{ steps.image.outputs.name }}
+          docker push ${{ steps.image.outputs.name }}
+
