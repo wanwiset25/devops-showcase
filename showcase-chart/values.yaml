@@ -12,4 +12,4 @@ configmap:
     KEY3: 'DEFAULT3'
 image:
   name: wanwiset/devops-showcase
-  tag: latest
+  tag: test
