@@ -36,3 +36,4 @@ How to Deploy
   - create and sync argocd application
 
 
+** this README doesn't include information on CICD workflows and secrets setup
