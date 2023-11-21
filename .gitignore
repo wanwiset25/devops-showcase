@@ -1,2 +1,3 @@
 .terraform*
-terraform*
+terraform.*
+vars_secret.tf
