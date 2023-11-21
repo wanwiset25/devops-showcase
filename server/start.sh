@@ -1,7 +1,2 @@
 #!/bin/bash
-
-whoami
-
-ls
-
-./server || sleep infinity
+/app/server
