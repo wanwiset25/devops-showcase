@@ -6,6 +6,8 @@ network:
 namespace: default
 configmap:
   name: server-configmap
+secret:
+  name: showcase-secret
   data:
     KEY1: 'DEFAULT1'
     KEY2: 'DEFAULT2'

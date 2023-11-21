@@ -24,6 +24,8 @@ spec:
         envFrom:
         - configMapRef:
             name: {{ .Values.configmap.name }}
+        - secretRef:
+            name: {{ .Values.secret.name }}
         resources:
           requests:
             memory: "64Mi" 
