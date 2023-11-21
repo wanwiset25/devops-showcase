@@ -8,6 +8,4 @@ RUN rm -r /build
 WORKDIR /app
 EXPOSE 8080
 
-# ENTRYPOINT [ "/bin/bash", "sleep infi" ]
-
-ENTRYPOINT ["bash", "-c", "sleep infinity"]
+ENTRYPOINT [ "/bin/bash", "/app/server" ]
