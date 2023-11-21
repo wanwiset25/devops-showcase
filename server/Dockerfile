@@ -5,8 +5,12 @@ WORKDIR /build
 RUN go build -o /app/server
 RUN rm -r /build
 
+COPY start.sh /app/start.sh
 WORKDIR /app
+RUN chmod +x start.sh
 EXPOSE 8080
 
-ENTRYPOINT [ "/bin/bash", "/app/server" ]
+
+ENTRYPOINT [ "/app/start.sh" ]
+
 
