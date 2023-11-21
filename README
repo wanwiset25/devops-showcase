@@ -1,0 +1,38 @@
+Requirements
+
+1. kubectl
+2. terraform
+3. aws (CLI)
+
+How to Deploy
+
+1. Create EKS cluster using terraform
+  - cd terraform
+  - terraform init
+  - terraform validate
+  - terraform apply 
+  Here terraform will error in the last step due to argocd.tf cannot be deployed because kubectl has not bind with the cluster yet.
+
+2. Bind kubectl with the new cluster 
+  - aws eks update-kubeconfig --region ap-northeast-2 --name showcase-cluster 
+
+3. Apply terraform again to deploy Argocd
+  - terraform apply 
+
+4. Port-forward Argocd on EKS cluster to local machine using kubectl
+  - kubectl -n argocd port-forward svc/argocd-server 2222:80
+
+5. Get argocd password in secrets and login
+  - kubectl get secrets argocd-initial-admin-secret -o yaml -n argocd
+  - echo "INITIAL_PASSWORD" | base64 -d
+  Go to localhost:2222 and login (username: admin)
+
+6. Create Argocd deployment
+  - New App
+  - Select 'Automatic' under 'SYNC POLICY'
+  - use this repo's url in 'Repository URL'
+  - use 'showcase-chart' under 'Path' this will make argocd use helmcharts under that directory for deployment
+  - under 'VALUES-FILES' input 'values-dev.yaml' to make dev env deployment
+  - create and sync argocd application
+
+
