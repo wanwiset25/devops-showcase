@@ -5,6 +5,8 @@ on:
       - main
     tags:
       - "*"
+    paths:
+      - server**
 
 jobs:
   build_and_push_to_docker_registry:
