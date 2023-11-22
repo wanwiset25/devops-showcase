@@ -44,6 +44,16 @@ spec:
           limits:
             memory: "64Mi"
             cpu: "100m"    
+        readinessProbe:
+          exec:
+            command:
+            - curl
+            - localhost:8080/readiness
+        livenessProbe:
+          exec:
+            command:
+            - curl
+            - localhost:8080/health
 
 ---
 apiVersion: autoscaling/v2
