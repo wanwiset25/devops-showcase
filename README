@@ -27,7 +27,7 @@ How to Deploy
   - echo "INITIAL_PASSWORD" | base64 -d
   Go to localhost:2222 and login (username: admin)
 
-6. Create Argocd deployment
+6. Create Argocd deployment with argoCD UI
   - New App
   - Select 'Automatic' under 'SYNC POLICY'
   - use this repo's url in 'Repository URL'
@@ -35,5 +35,8 @@ How to Deploy
   - under 'VALUES-FILES' input 'values-dev.yaml' to make dev env deployment
   - create and sync argocd application
 
+7. Test querying the server-app using port-foward
+  - kubectl -n dev port-forward deployment/server 1111:8080
+  - curl localhost:1111
 
 ** this README doesn't include information on CICD workflows and secrets setup
