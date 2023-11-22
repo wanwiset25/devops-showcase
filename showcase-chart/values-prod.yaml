@@ -1,5 +1,9 @@
 namespace: prod
-replica_count: 4
+# replica_count: 4
+hpa:
+  min_replicas: 2
+  max_replicas: 10
+  target_cpu_util: 50
 network:
   external_port: 30200
 configmap:

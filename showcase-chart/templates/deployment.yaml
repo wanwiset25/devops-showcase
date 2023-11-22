@@ -6,7 +6,8 @@ metadata:
   labels:
     app: {{ .Values.app_name }}
 spec:
-  replicas: {{ .Values.replica_count }}
+  # replicas: {{ .Values.replica_count }}
+  replicas : 1      #use HPA
   selector:
     matchLabels:
       app: {{ .Values.app_name }}
@@ -33,3 +34,20 @@ spec:
           limits:
             memory: "64Mi"
             cpu: "100m"    
+
+---
+apiVersion: apps/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ .Values.app_name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.app_name }}
+spec:
+  scaleTargetRef:
+  apiVersion: apps/v1
+  kind: Deployment
+  name: {{ .Values.app_name }}
+minReplicas: {{ .Values.hpa.min_replicas }}
+maxReplicas: {{ .Values.hpa.max_replicas }}
+targetCPUUtilizationPercentage: {{ .Values.hpa.target_cpu_util }}

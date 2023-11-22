@@ -1,5 +1,9 @@
 namespace: dev
-replica_count: 2
+# replica_count: 2
+hpa:
+  min_replicas: 2
+  max_replicas: 4
+  target_cpu_util: 80
 network:
   external_port: 30100
 configmap:
