@@ -9,3 +9,4 @@ network:
 configmap:
   data:
     KEY1: 'DEV1'
+security: true

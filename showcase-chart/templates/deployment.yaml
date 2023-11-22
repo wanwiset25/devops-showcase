@@ -27,6 +27,16 @@ spec:
             name: {{ .Values.configmap.name }}
         - secretRef:
             name: {{ .Values.secret.name }}
+        {{ if eq .Values.security true }}
+        securityContext:
+          readOnlyRootFilesystem: true
+          allowPrivilegeEscalation: false
+          privileged: false        
+          runAsUser: 12345
+          capabilities:
+            drop:
+            - all
+        {{ end }}
         resources:
           requests:
             memory: "64Mi" 

@@ -11,3 +11,4 @@ configmap:
     KEY1: 'PROD1'
 image:
   tag: v1.0.0
+security: true
