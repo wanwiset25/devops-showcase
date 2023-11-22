@@ -49,11 +49,15 @@ spec:
             command:
             - curl
             - localhost:8080/readiness
+          initialDelaySeconds: 5
+          periodSeconds: 5
         livenessProbe:
           exec:
             command:
             - curl
             - localhost:8080/health
+          initialDelaySeconds: 5
+          periodSeconds: 5
 
 ---
 apiVersion: autoscaling/v2
