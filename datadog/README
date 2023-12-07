@@ -1,0 +1,11 @@
+Install datadog agent EKS, can also be found at datadog > integrations > agent > kubernetes > helm chart
+
+helm repo add datadog https://helm.datadoghq.com
+helm repo update
+
+kubectl create secret generic datadog-secret --from-literal api-key=xxxxx
+
+config datadog log options on website
+copy output to datadog-values.yaml
+
+helm install datadog-agent -f datadog-values.yaml datadog/datadog

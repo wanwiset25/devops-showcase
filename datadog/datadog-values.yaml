@@ -1,0 +1,12 @@
+datadog:
+  apiKeyExistingSecret: datadog-secret
+  registry: gcr.io/datadoghq
+  site: ap1.datadoghq.com
+  tags:
+    - env:dev
+  apm:
+    instrumentation:
+      enabled: true
+  logs:
+    enabled: true
+    containerCollectAll: true
