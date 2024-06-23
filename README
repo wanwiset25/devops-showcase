@@ -1,3 +1,8 @@
+CONTEXT
+I made this to quickly showcase how a devops setup and workflow might look like in an enterprise environment. (definitely not as a homework for any interviewing process) 
+
+This utilizes EKS on AWS cloud which is controlled by terraform code. Service deployment is automated. Github Actions CICD handles build process while ArgoCD provides a nice devops dashboard and triggers deployment when change is detected (GitOps concept).
+
 Requirements
 
 1. kubectl
