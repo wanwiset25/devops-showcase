@@ -1,4 +1,4 @@
-Install datadog agent EKS, can also be found at datadog > integrations > agent > kubernetes > helm chart
+Install datadog agent EKS, instructions can also be found at datadog > integrations > agent > kubernetes > helm chart
 
 helm repo add datadog https://helm.datadoghq.com
 helm repo update
